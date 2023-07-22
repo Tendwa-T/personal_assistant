@@ -1,65 +1,68 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+/* import 'package:hive_flutter/hive_flutter.dart';
 
-import 'assistant/assistant_login.dart';
+import 'assistant/assistant_login.dart'; */
 
 class Home extends StatelessWidget {
-  Home({super.key});
+  const Home({super.key});
 
-  final Box _boxLogin = Hive.box('login');
+/*   final Box _boxLogin = Hive.box('login'); */
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("PerSSistant X"),
-        elevation: 0,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.white),
-              ),
-              child: IconButton(
-                onPressed: () {
-                  _boxLogin.clear();
-                  _boxLogin.put("loginStatus", false);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const Login();
-                      },
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.logout_rounded),
-              ),
-            ),
-          )
-        ],
-      ),
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return MaterialApp(
+        home: DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: const TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.home)),
+              Tab(icon: Icon(Icons.schedule)),
+              Tab(icon: Icon(Icons.person_outline)),
+            ],
+          ),
+          title: const Text("PerSSistant X"),
+        ),
+        body: TabBarView(
           children: [
-            Text(
-              "Welcome 🎉",
-              style: Theme.of(context).textTheme.bodyLarge,
+            Center(
+                child: Container(
+              padding: const EdgeInsets.all(10),
+              color: Colors.transparent,
+              child: const Center(
+                  child: Text(
+                "Hello from Home",
+                style: TextStyle(color: Colors.black, fontSize: 20),
+              )),
+            )),
+            Center(
+              child: Container(
+                color: Colors.transparent,
+                padding: const EdgeInsets.all(10),
+                child: const Center(
+                  child: Text(
+                    "Hello from Schedule",
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                ),
+              ),
             ),
-            const SizedBox(
-              height: 10,
+            Center(
+              child: Container(
+                color: Colors.transparent,
+                padding: const EdgeInsets.all(10),
+                child: const Center(
+                  child: Text(
+                    "Hello from Profile",
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                ),
+              ),
             ),
-            Text(
-              _boxLogin.get('username'),
-              style: Theme.of(context).textTheme.headlineLarge,
-            )
           ],
         ),
       ),
-    );
+    ));
   }
 }
