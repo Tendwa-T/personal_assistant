@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'ui/assistant/login.dart';
-import 'ui/assistant/signup.dart';
+import 'ui/assistant/assistant_login.dart';
+import 'ui/assistant/assistant_signup.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

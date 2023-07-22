@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'assistant/login.dart';
+import 'assistant/assistant_login.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
